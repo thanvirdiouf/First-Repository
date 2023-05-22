@@ -18,11 +18,11 @@ while True:
     for color in colors:
         if color in screenshot.getcolors(screenshot.size[0] * screenshot.size[1]):
             # get the coordinates of the color
-            coordinates = pyautogui.locateAllOnScreen(pyautogui.screenshot(), confidence=0.9)
+            coordinates = pyautogui.locateAllOnScreen(color, confidence=0.9)
             
             # click on each coordinate with a delay of 0.1 seconds
             for coordinate in coordinates:
-                pyautogui.click(coordinate, interval=delay)
+                pyautogui.click(coordinate[0], coordinate[1], interval=delay)
                 
     # check if the Ctrl key is pressed to terminate the program
     if keyboard.is_pressed('ctrl'):
